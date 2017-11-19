@@ -1,3 +1,5 @@
+# write a function to flatten a list
+
 
 def flatten_list(given_list):
     new_list = []
