@@ -2,8 +2,11 @@ library(tm)
 library(wordcloud)
 library(memoise)
 
+SESSION_FILES_PATH = "../SessionFiles"
+SESSION_LABELS_PATH = "../data/sessions_w_labels.csv"
+
 # The list of valid sessions
-filenames <- list.files(path = "C:/Users/swong/Documents/GitHub/flaming-dubstep/OMF/Rfiles/SessionFiles", pattern = NULL, all.files = FALSE,
+filenames <- list.files(path = SESSION_FILES_PATH, pattern = NULL, all.files = FALSE,
            full.names = FALSE, recursive = FALSE,
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
 
@@ -13,7 +16,7 @@ clean_filename <- function(filename) {
 
 
   #lapply(filenames, clean_filename)
-session_labels_data <- read.csv("C:/Users/swong/Documents/GitHub/flaming-dubstep/OMF/data/sessions_w_labels.csv")
+session_labels_data <- read.csv(SESSION_LABELS_PATH)
 session_labels_data <- session_labels_data[order(session_labels_data$date), ]
 session_labels_data$session_labels
 session_labels_data$session_labels = lapply(session_labels_data$session_labels, as.character)
