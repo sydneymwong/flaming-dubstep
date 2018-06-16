@@ -24,7 +24,8 @@ fluidPage(
     
     # Show Word Cloud
     mainPanel(
-      plotOutput("plot")
+      plotOutput("plot"),
+      verbatimTextOutput("labels")
     )
   )
 )

@@ -15,7 +15,7 @@ clean_filename <- function(filename) {
 }
 
 
-  #lapply(filenames, clean_filename)
+#lapply(filenames, clean_filename)
 session_labels_data <- read.csv(SESSION_LABELS_PATH)
 session_labels_data <- session_labels_data[order(session_labels_data$date), ]
 session_labels_data$session_labels
@@ -29,9 +29,6 @@ getTermMatrix <- memoise(function(session) {
   # malicious user could manipulate this value.
   if (is.null(session)) {
     session = sessions[1]
-    print("Session is null")
-  } else {
-    print("Session is not null")
   }
 
   if (!(session %in% sessions))
