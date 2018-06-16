@@ -26,27 +26,30 @@ getTermMatrix <- memoise(function(session) {
   # malicious user could manipulate this value.
   if (is.null(session)) {
     session = sessions[1]
+    print("Session is null")
+  } else {
+    print("Session is not null")
   }
-  
+
   if (!(session %in% sessions))
     stop("Unknown session")
-  
+
   filename <- session_labels_data$id[which(session_labels_data$title==session)]
   text <- readLines(sprintf("./SessionFiles/%s.txt", filename),
                     encoding="ISO-8859-1")
-  
+
   myCorpus = Corpus(VectorSource(text))
   myCorpus = tm_map(myCorpus, content_transformer(tolower))
   myCorpus = tm_map(myCorpus, removePunctuation)
   myCorpus = tm_map(myCorpus, removeNumbers)
   myCorpus = tm_map(myCorpus, removeWords,
                     c(stopwords("SMART"), "the", "and", "but"))
-  
+
   myDTM = TermDocumentMatrix(myCorpus,
                              control = list(minWordLength = 1))
-  
+
   m = as.matrix(myDTM)
-  
+
   sort(rowSums(m), decreasing = TRUE)
   
 })

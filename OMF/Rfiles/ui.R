@@ -6,7 +6,7 @@ fluidPage(
     # Sidebar with a slider and selection inputs
     sidebarPanel(
       selectInput("selection1", "Choose a user id:", 
-                  choices = userids, selected = 160),
+                  choices = userids),
       #selectInput("selection1", "Choose a user id:", 
       #            choices = userids),
       #actionButton("update1", "Change"),
