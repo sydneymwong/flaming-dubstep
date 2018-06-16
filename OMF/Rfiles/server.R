@@ -4,11 +4,6 @@ function(input, output, session) {
   terms <- reactive({
     # Change when the "update" button is pressed...
     input$update
-    # if (is.null(input$selection1)) {
-    #   curr_userid = userids[1]
-    # } else {
-      # curr_userid = input$selection1
-    # }
 
     #input$update
     # ...but not for anything else
@@ -27,13 +22,9 @@ function(input, output, session) {
   
   labels <- reactive({
     input$update
-    # if (is.null(input$selection2)) {
-    #   curr_session = sessions[1]
-    # } else {
     isolate({
       curr_session = input$selection2
     })
-    # }
     
     session_labels_data$session_labels[which(session_labels_data$title==curr_session)]
   })
